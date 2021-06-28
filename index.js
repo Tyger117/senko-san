@@ -9,7 +9,7 @@ client.player = new Player(client, {
     enableLive: true
 });
 client.player.use("YOUTUBE_DL", downloader);
-client.config = require('./config/bot');
+client.config = require('./config/bot.js');
 client.filters = client.config.filters;
 client.commands = new discord.Collection();
 
@@ -38,6 +38,4 @@ for (const file of player) {
     client.player.on(file.split(".")[0], event.bind(null, client));
 };
 
-
-/// start bot
 client.login(client.config.discord.token);

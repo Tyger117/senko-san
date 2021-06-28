@@ -1,7 +1,8 @@
 module.exports = {
     name: 'queue',
-    aliases: ['q'],
+    description: 'Displays the queue.',
     category: 'Music',
+    aliases: ['q'],
     utilisation: '{prefix}queue',
 
     execute(client, message) {

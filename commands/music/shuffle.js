@@ -1,7 +1,8 @@
 module.exports = {
     name: 'shuffle',
-    aliases: ['sh'],
+    description: 'Shuffles the queue.',
     category: 'Music',
+    aliases: ['sh'],
     utilisation: '{prefix}shuffle',
 
     execute(client, message) {

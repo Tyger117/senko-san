@@ -1,7 +1,8 @@
 module.exports = {
     name: 'previous',
-    aliases: ['back'],
+    description: 'Go backwards in the queue.',
     category: 'Music',
+    aliases: ['back'],
     utilisation: '{prefix}previous',
 
     execute(client, message) {

@@ -1,7 +1,8 @@
 module.exports = {
     name: 'search',
-    aliases: ['sr'],
+    description: 'Search for a song to be added to the queue.',
     category: 'Music',
+    aliases: ['sr'],
     utilisation: '{prefix}search [name/URL]',
 
     execute(client, message, args) {

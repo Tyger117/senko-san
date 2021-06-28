@@ -1,7 +1,8 @@
 module.exports = {
     name: 'resume',
-    aliases: [],
+    description: 'Resumes playback.',
     category: 'Music',
+    aliases: [],
     utilisation: '{prefix}resume',
 
     execute(client, message) {

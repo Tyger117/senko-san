@@ -1,7 +1,8 @@
 module.exports = {
     name: 'play',
-    aliases: ['p'],
+    description: 'Adds a song to the queue.',
     category: 'Music',
+    aliases: ['p'],
     utilisation: '{prefix}play [name/URL]',
 
     async execute(client, message, args) {

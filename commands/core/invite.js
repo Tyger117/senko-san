@@ -1,16 +1,17 @@
 module.exports = {
     name: 'invite',
-    aliases: [],
+    description: 'Sends an invite link to the user.',
     category: 'Infos',
+    aliases: [],
     utilisation: '{prefix}invite',
 
     execute (client, message) {
         message.channel.send({
             embed: {
-                color: 'D8DEE9',
+                color: `${client.config.embed.colour}`,
                 author: { name: 'Invite' },
-                description: 'Click [here](https://discord.com/oauth2/authorize?client_id=801953775911960606&permissions=8&scope=bot) to invite me to your server! :D',
-                footer: { text: 'Mimi by tyger | !help' }
+                description: 'Click [here](https://senko.tyger796.com) to invite me to your server!',
+                footer: { text: `${client.config.embed.footer}` }
             }
         })
     }

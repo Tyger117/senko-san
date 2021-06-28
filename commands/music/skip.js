@@ -1,7 +1,8 @@
 module.exports = {
     name: 'skip',
-    aliases: ['sk', 's'],
+    description: 'Skip the current song playing.',
     category: 'Music',
+    aliases: ['sk', 's'],
     utilisation: '{prefix}skip',
 
     execute(client, message) {

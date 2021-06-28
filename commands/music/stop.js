@@ -1,7 +1,8 @@
 module.exports = {
     name: 'stop',
-    aliases: ['dc', 'die', 'yeeted'],
+    description: 'Stops playback, clears the queue and leave the voice channel.',
     category: 'Music',
+    aliases: ['dc', 'die', 'yeeted'],
     utilisation: '{prefix}stop',
 
     execute(client, message) {

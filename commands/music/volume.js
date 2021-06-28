@@ -1,7 +1,8 @@
 module.exports = {
     name: 'volume',
-    aliases: ['v'],
+    description: 'Adjust the volume.',
     category: 'Music',
+    aliases: ['v'],
     utilisation: '{prefix}volume [1-100]',
 
     execute(client, message, args) {

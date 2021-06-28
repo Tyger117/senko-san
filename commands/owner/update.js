@@ -2,24 +2,25 @@ const exec = require('child_process').exec;
 
 module.exports = {
     name: 'update',
-    aliases: ["reload"],
+    description: 'Manually update the server.',
     category: 'Owner',
+    aliases: ["reload"],
     utilisation: '{prefix}update',
+
     execute (client, message) {
-            exec(`git pull`, (error, stdout) => {
+        exec(`git pull`, (error, stdout) => {
             let response = (error || stdout);
             if (!error) {
                 if (response.includes("Already up to date.")) {
-                    console.log('[GitHub] Already up to date.')
-                    message.channel.send("Already up to date!")
+                    message.channel.send('[Server] Already up to date.');
+                    console.log('[Github] Already up to date.');
                 } else {
-                    console.log('[GitHub] \nNew update on GitHub. Pulling... \n\n Logs: \n' + response + "\n\n**Restarting bot**");
-                    client.channels.cache.get(client.config.update_channel).send('New update on GitHub. Pulling... \n\n Logs: \n```' + response + "```" + "\n\n**Restarting bot**");
+                    client.chanels.cache.get(client.config.discord.update.channel).send("New update on GitHub. Pulling... \n\n Logs: \n```" + response + "```" + "\n\n**Restarting bot...**");
                     setTimeout(() => {
                         process.exit();
-                    }, 30000)
+                    }, 15000);
                 }
             }
-        })
+        });
     }
 }

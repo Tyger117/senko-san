@@ -1,7 +1,8 @@
 module.exports = {
     name: 'ping',
-    aliases: [],
+    description: 'The all-mighty command to check if the bot is alive or not.',
     category: 'Infos',
+    aliases: [],
     utilisation: '{prefix}ping',
 
     execute(client, message) {

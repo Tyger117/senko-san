@@ -1,7 +1,8 @@
 module.exports = {
     name: 'nowplaying',
-    aliases: ['np'],
+    description: 'Displays the current song playing.',
     category: 'Music',
+    aliases: ['np'],
     utilisation: '{prefix}nowplaying',
 
     execute(client, message) {
@@ -18,9 +19,9 @@ module.exports = {
 
         message.channel.send({
             embed: {
-                color: 'EAC8C8',
+                color: client.config.embed.colour,
                 author: { name: track.title },
-                footer: { text: 'Mimi | !help | Nord Studios' },
+                footer: { text: client.config.embed.footer },
                 fields: [
                     { name: 'Requested by', value: track.requestedBy.username, inline: false },
                     { name: 'Progress bar', value: client.player.createProgressBar(message, { timecodes: true }), inline: true }

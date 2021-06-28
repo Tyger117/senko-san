@@ -1,5 +1,5 @@
 module.exports = (client, message) => {
-    if (message.author.bot || message.channel.type === 'dm') return;
+    if (message.author.bot) return;
 
     const prefix = client.config.discord.prefix;
 

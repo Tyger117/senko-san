@@ -1,7 +1,8 @@
 module.exports = {
     name: 'commands',
-    aliases: ['c'],
+    description: 'Displays all the avalible commands.',
     category: 'Core',
+    aliases: ['c'],
     utilisation: '{prefix}commands <command name>',
 
     execute(client, message, args) {
@@ -16,7 +17,7 @@ module.exports = {
                 embed: {
                     color: 'EAC8C8',
                     author: { name: 'Help' },
-                    footer: { text: 'To find more info on a specific command, please use !commands [command]' },
+                    footer: { text: `To find more info on a specific command, please use ${client.config.discord.prefix}commands [command]` },
                     fields: [
                         { name: 'Core', value: core },
                         { name: 'Infos', value: infos },
@@ -32,21 +33,24 @@ module.exports = {
         } else {
             const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
 
-            if (!command) return message.channel.send(`${client.emotes.error} I did not find this command !`);
+            if (!command) return message.channel.send(`Command not found!`);
+
+            console.log(command.description);
 
             message.channel.send({
                 embed: {
-                    color: 'EAC8C8',
+                    color: `${client.config.embed.colour}`,
                     author: { name: 'Commands' },
                     footer: { text: client.config.embed.footer },
                     fields: [
                         { name: 'Name', value: command.name, inline: true },
+                        { name: 'Description', value: command.description, inline: true },
                         { name: 'Category', value: command.category, inline: true },
                         { name: 'Aliase(s)', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
                         { name: 'Utilisation', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
                     ],
                     timestamp: new Date(),
-                    description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
+                    description: 'Find information on the command provided.\nRequired arguments `[]`, optional arguments `<>`.',
                 }
             });
         };

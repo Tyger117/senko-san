@@ -1,17 +1,16 @@
-const exec = require('child_process').exec;
-
 module.exports = {
     name: 'debug',
-    aliases: [],
+    description: '',
     category: 'Infos',
+    aliases: [],
     utilisation: '{prefix}debug',
 
     execute(client, message) {
         message.channel.send({
             embed: {
-                color: 'EAC8C8',
+                color: `${client.config.embed.colour}`,
                 author: { name: 'Debug' },
-                footer: { text: 'Mimi | !help | Nord Studios' },
+                footer: { text: `${client.config.embed.colour}` },
                 fields: [
                     { name: 'Voice connections', value: `${client.voice.connections.size}`, inline: true },
                 ]

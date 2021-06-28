@@ -1,7 +1,8 @@
 module.exports = {
     name: 'w-filters',
-    aliases: ['filters'],
+    description: 'Displays all the avalible filters.',
     category: 'Music',
+    aliases: ['filters'],
     utilisation: '{prefix}filters',
 
     execute(client, message) {
@@ -20,8 +21,8 @@ module.exports = {
 
         message.channel.send({
             embed: {
-                color: 'EAC8C8',
-                footer: { text: 'Mimi | !help | Nord Studios' },
+                color: client.config.embed.colour,
+                footer: { text: client.config.embed.footer },
                 fields: [
                     { name: 'Filters', value: filtersStatuses[0].join('\n'), inline: true },
                     { name: '** **', value: filtersStatuses[1].join('\n'), inline: true },

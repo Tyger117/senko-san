@@ -1,7 +1,8 @@
 module.exports = {
     name: 'loop',
-    aliases: ['lp', 'repeat'],
+    description: 'Toggles weather loop is on queue/current/off.',
     category: 'Music',
+    aliases: ['lp', 'repeat'],
     utilisation: '{prefix}loop',
 
     execute(client, message, args) {

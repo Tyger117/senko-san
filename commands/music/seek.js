@@ -1,7 +1,8 @@
 module.exports = {
     name: 'seek',
-    aliases: [],
+    description: 'Skip an amount of seconds in a song.',
     category: 'Music',
+    aliases: [],
     utilisation: '{prefix}seek [seconds]',
 
     execute(client, message, args) {
