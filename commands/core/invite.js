@@ -1,11 +1,13 @@
 module.exports = {
     name: 'invite',
     description: 'Sends an invite link to the user.',
-    category: 'Infos',
+    category: 'Core',
     aliases: [],
     utilisation: '{prefix}invite',
 
     execute (client, message) {
+        const prefix = client.serverDB.fetch(`prefix_${message.guild.id}`);
+        
         message.channel.send({
             embed: {
                 color: `${client.config.embed.colour}`,

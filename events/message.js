@@ -1,7 +1,20 @@
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
     if (message.author.bot) return;
 
-    const prefix = client.config.discord.prefix;
+    if (message.content === `<@${client.config.bot.id}>`) {
+          
+    }
+
+    let prefix; 
+    let prefixes = await client.serverDB.fetch(`prefix_${message.guild.id}`);
+
+    if (prefixes == null) {
+        prefix = `${client.config.discord.prefix}`
+        client.serverDB.set(`prefix_${message.guild.id}`, prefix);
+    } else {
+        prefix = prefixes;
+    }
+
 
     if (message.content.indexOf(prefix) !== 0) return;
 

@@ -6,36 +6,34 @@ module.exports = {
     utilisation: '{prefix}commands <command name>',
 
     execute(client, message, args) {
+        const prefix = client.serverDB.fetch(`prefix_${message.guild.id}`);
+
         if (!args[0]) {
             const core = message.client.commands.filter(x => x.category == 'Core').map((x) => '`' + x.name + '`').join(', ');
-            const infos = message.client.commands.filter(x => x.category == 'Infos').map((x) => '`' + x.name + '`').join(', ');
             const music = message.client.commands.filter(x => x.category == 'Music').map((x) => '`' + x.name + '`').join(', ');
             const mod = message.client.commands.filter(x => x.category == 'Moderation').map((x) => '`' + x.name + '`').join(', ');
-            const owner = message.client.commands.filter(x => x.category == 'Owner').map((x) => '`' + x.name + '`').join(', ');
+            const server = message.client.commands.filter(x => x.category == 'Server').map((x) => '`' + x.name + '`').join(', ');
 
             message.channel.send({
                 embed: {
-                    color: 'EAC8C8',
-                    author: { name: 'Help' },
-                    footer: { text: `To find more info on a specific command, please use ${client.config.discord.prefix}commands [command]` },
+                    color: client.config.embed.colour,
+                    author: { name: 'Commands' },
+                    footer: { text: `To find more info on a specific command, please use ${prefix}commands [command]` },
                     fields: [
                         { name: 'Core', value: core },
-                        { name: 'Infos', value: infos },
+                        { name: 'Server', value: server }, 
+                        { name: 'Moderation', value: infos },
                         { name: 'Music', value: music },
-                        { name: 'Moderation', value: mod },
-                        { name: 'Owner', value: owner },
                         { name: 'Filters', value: client.filters.map((x) => '`' + x + '`').join(', ') },
                     ],
                     timestamp: new Date(),
-                    description: `To use filters, ${client.config.discord.prefix}filter (the filter). Example : ${client.config.discord.prefix}filter 8D.`,
+                    description: `To use filters, ${prefix}filter (the filter). Example : ${prefix}filter 8D.`,
                 },
             });
         } else {
             const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
 
             if (!command) return message.channel.send(`Command not found!`);
-
-            console.log(command.description);
 
             message.channel.send({
                 embed: {

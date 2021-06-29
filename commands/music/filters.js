@@ -6,6 +6,8 @@ module.exports = {
     utilisation: '{prefix}filters',
 
     execute(client, message) {
+        const prefix = client.serverDB.fetch(`prefix_${message.guild.id}`);
+
         if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel!`);
 
         if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`You are not in the same voice channel!`);
@@ -28,7 +30,7 @@ module.exports = {
                     { name: '** **', value: filtersStatuses[1].join('\n'), inline: true },
                 ],
                 timestamp: new Date(),
-                description: `List of all filters enabled or disabled.\nUse \`${client.config.discord.prefix}filter\` to add a filter to a song.`,
+                description: `List of all filters enabled or disabled.\nUse \`${prefix}filter\` to add a filter to a song.`,
             },
         });
     },

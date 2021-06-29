@@ -1,7 +1,7 @@
 module.exports = (client, message, query, tracks) => {
     message.channel.send({
         embed: {
-            color: 'BLUE',
+            color: client.config.embed.colour,
             author: { name: `Here are your search results for ${query}` },
             footer: { text: 'Send the number of the result you want in chat.' },
             timestamp: new Date(),

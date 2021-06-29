@@ -4,6 +4,7 @@ const client = new discord.Client({ disableMentions: 'everyone' });
 const { Player } = require('discord-player');
 const exec = require('child_process').exec;
 const downloader = require('@discord-player/downloader').Downloader;
+const db = require('quick.db');
 
 client.player = new Player(client, {
     enableLive: true
@@ -12,6 +13,10 @@ client.player.use("YOUTUBE_DL", downloader);
 client.config = require('./config/bot.js');
 client.filters = client.config.filters;
 client.commands = new discord.Collection();
+
+// Databases
+client.serverDB = new db.table('server');
+client.economyDB = new db.table('economy');
 
 const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 const player = fs.readdirSync('./player').filter(file => file.endsWith('.js'));
