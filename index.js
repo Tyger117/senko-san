@@ -28,6 +28,7 @@ for (const file of events) {
     client.on(file.split(".")[0], event.bind(null, client));
 };
 
+
 fs.readdirSync('./commands').forEach(dirs => {
     const commands = fs.readdirSync(`./commands/${dirs}`).filter(files => files.endsWith('.js'));
 
