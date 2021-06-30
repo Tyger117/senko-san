@@ -16,14 +16,14 @@ module.exports = {
         let reason = args.slice(1).join(" ");
         if (!reason) reason = 'No reason provided!';
 
-        if (!user.banable) return message.channel.send("Error! This member isn't kickable.");
+        if (!user.bannable) return message.channel.send("Error! This member isn't bannable.");
 
         try {
-            user.kick(reason);
+            user.ban(reason);
         } catch (err) {
             message.channel.send(`Oops! An unexpected error occured... ` + '`' + `${err}` + '`');
         }
 
-        message.channel.send(`✅ Successfully kicked **${user.user.tag}**!`);
+        message.channel.send(`✅ Successfully banned **${user.user.tag}**!`);
     }
 }

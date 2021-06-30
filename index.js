@@ -17,6 +17,7 @@ client.commands = new discord.Collection();
 // Databases
 client.serverDB = new db.table('server');
 client.economyDB = new db.table('economy');
+client.profileDB = new db.table('profile');
 
 const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 const player = fs.readdirSync('./player').filter(file => file.endsWith('.js'));
