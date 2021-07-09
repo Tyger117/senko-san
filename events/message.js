@@ -13,7 +13,7 @@ module.exports = async (client, message) => {
 
     if (message.content === `<@${client.config.bot.id}>`) {
         const prefix = client.serverDB.get(`prefix_${message.guild.id}`);
-        message.channel.send(`My prefix is: ${prefix}`);
+        message.channel.send(`My prefix is: `+ '`' + `${prefix}` + '`');
     }
 
     if (message.content.indexOf(prefix) !== 0) return;
